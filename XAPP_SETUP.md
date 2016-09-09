@@ -6,8 +6,9 @@ To use the Streamer with XAPPs, you need to:
 
 Each of these steps is described below:
 # Setup the XAPP
-The current behavior is:
-## Introduction
+The streamer experience is made up of introductory audio (from the base audio or now playing text) and custom actions that define responses to various actions the user can take.
+
+## Introductory Audio
 For the introduction (i.e., the audio that is played when the Skill is first opened), the Now Playing Text will be used, if it is set. The text can include SSML tags (such as <audio> or <break>).
 If the Now Playing Text is not set, the Base Audio of the XAPP will be used.
 
