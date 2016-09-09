@@ -54,7 +54,7 @@ Just upload a file as the Foreground trailing audio, then set the custom data li
 ### Responding with TTS
 Same as how we currently do it:
 ```json
-{"tts": "My text-to-speech"},
+{"tts": "My text-to-speech"}
 ```
 Note that the TTS can include SSML elements (such <audio> and <break>). Use single-quotes for SSML tags.
 
