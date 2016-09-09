@@ -30,7 +30,7 @@ Here is example JSON for the custom data:
 {
   "tracks": [
     {"title": "Track1", "url": "https://mystreaming.com/MyAudio.m4a"},
-    {"title": "Track2", "url": "https://mystreaming.com/MyAudio.m4a"},
+    {"title": "Track2", "url": "https://mystreaming.com/MyAudio2.m4a"}
   ]
 }
 ```
@@ -40,7 +40,7 @@ When the custom action is invoked, the playlist will begin playback.
 ### Streaming a track
 Example:
 ```json
-{"title": "Track1", "url": "https://mystreaming.com/MyAudio.m4a"},
+{"title": "Track1", "url": "https://mystreaming.com/MyAudio.m4a"}
 ```
 
 Note, we support this as well as playing back the uploaded trailing audio as this can be pointed at an actual, continuous stream, as opposed to just a file.
