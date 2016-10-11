@@ -35,25 +35,37 @@ describe('Skill Sample AudioPlayer Functional Test', function() {
             // Ensures the track with correct token is returned
             assert.equal(payload.response.directives[0].audioItem.stream.token, '0');
 
-            alexa.intended('AMAZON.NextIntent', null, function (error, payload) {
-                // Ensures the track with next token is returned
-                assert.equal(payload.response.directives[0].type, 'AudioPlayer.Play');
-                assert.equal(payload.response.directives[0].playBehavior, 'REPLACE_ALL');
-                assert.equal(payload.response.directives[0].audioItem.stream.token, '1');
-                done();
-            });
+            let track = 1;
+            var callNext = () => {
+                alexa.intended('AMAZON.NextIntent', null, function (error, payload) {
+                    // Ensures the track with next token is returned
+                    assert.equal(payload.response.directives[0].type, 'AudioPlayer.Play');
+                    assert.equal(payload.response.directives[0].playBehavior, 'REPLACE_ALL');
+                    assert.equal(payload.response.directives[0].audioItem.stream.token, track + '');
+                    track++;
+
+                    if (track < 4) {
+                        callNext();
+                    } else {
+                        done();
+                    }
+                });
+            };
+            callNext();
+
         });
     });
 
     it('Plays The First Podcast To Completion And Goes To Next', function (done) {
 
         alexa.spoken('Play The Podcast', function(error, payload) {
-            alexa.on('AudioPlayer.PlaybackStarted', function(audioItem) {
-                assert.equal(audioItem.stream.token, '1');
-                done();
+            alexa.playbackNearlyFinished();
+            alexa.playbackFinished(function () {
+                alexa.on('AudioPlayer.PlaybackStarted', function(audioItem) {
+                    assert.equal(audioItem.stream.token, '1');
+                    done();
+                });
             });
-
-            alexa.audioItemFinished();
         });
     });
 });

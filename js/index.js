@@ -29,6 +29,7 @@ exports.handler = function(event, context, callback){
     }
     else {
         // The resources are loaded once and then cached, but this is done asynchronously
+        //AudioManager.load("file", "test/rssFeed.xml", function () {
         AudioManager.load("file", "test/rssFeed.xml", function () {
             alexa.execute();
         });

@@ -14,7 +14,7 @@
   "author": "Amazon.com",
   "license": "See license in ../LICENSE.txt",
   "devDependencies": {
-    "bespoken-tools": "^0.7.0",
+    "bespoken-tools": "^0.8.0",
     "mocha": "2.5.3"
   },
   "dependencies": {
